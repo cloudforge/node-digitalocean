@@ -25,8 +25,8 @@ var snapshots_1 = __importDefault(require("./modules/snapshots"));
 var tags_1 = __importDefault(require("./modules/tags"));
 var volumes_1 = __importDefault(require("./modules/volumes"));
 var DigitalOcean = /** @class */ (function () {
-    function DigitalOcean(token, pageSize, config) {
-        if (pageSize === void 0) { pageSize = 10; }
+    function DigitalOcean(token, config) {
+        var pageSize = (config === null || config === void 0 ? void 0 : config.pageSize) || 10;
         var requestHelper = new request_helper_1.default(token, {
             apiUrl: (config === null || config === void 0 ? void 0 : config.apiUrl) || ""
         });

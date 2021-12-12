@@ -20,6 +20,7 @@ import Tags from './modules/tags';
 import Volumes from './modules/volumes';
 interface Config {
     apiUrl: string;
+    pageSize: number;
 }
 export default class DigitalOcean {
     account: Account;
@@ -42,6 +43,6 @@ export default class DigitalOcean {
     snapshots: Snapshots;
     tags: Tags;
     volumes: Volumes;
-    constructor(token: string, pageSize?: number, config?: Config);
+    constructor(token: string, config?: Config);
 }
 export {};
