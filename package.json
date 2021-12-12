@@ -1,0 +1,46 @@
+{
+  "name": "@cloudforge/node-digitalocean",
+  "version": "4.6.1",
+  "description": "Node.js client for Digital Ocean API v2",
+  "author": "Vijay Rangan",
+  "homepage": "https://github.com/cloudforge/node-digitalocean",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudforge/node-digitalocean"
+  },
+  "main": "./dist/digitalocean.js",
+  "types": "./dist/digitalocean.d.ts",
+  "scripts": {
+    "build:dist": "tsc && cp -r src/types dist/",
+    "build:docs": "npx typedoc src/**/*.ts --plugin typedoc-plugin-markdown",
+    "test": "mocha"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cloudforge/node-digitalocean/issues"
+  },
+  "keywords": [
+    "digital ocean",
+    "digitalocean",
+    "droplet",
+    "cloud",
+    "wrapper",
+    "api",
+    "babel",
+    "es6"
+  ],
+  "dependencies": {
+    "got": "^11.8.2"
+  },
+  "devDependencies": {
+    "@types/request": "^2.48.5",
+    "chai": "^4.3.4",
+    "handlebars": "^4.7.7",
+    "mocha": "^8.4.0",
+    "natives": "^1.1.6",
+    "should": "13.2.3",
+    "typedoc": "^0.20.36",
+    "typedoc-plugin-markdown": "^3.1.1",
+    "typescript": "^4.2.4"
+  }
+}
