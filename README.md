@@ -4,12 +4,12 @@ A Node.js implementation of the Digital Ocean v2 API
 
 ## Install
 
-`@cloudforge/node-digitalocean` is available on the `npm` repository and as such, can be installed with `npm`.
+`node-digitalocean` is available on the `npm` repository and as such, can be installed with `npm`.
 
-To install `@cloudforge/node-digitalocean` and add it to your `package.json`, use the following command:
+To install `node-digitalocean` and add it to your `package.json`, use the following command:
 
 ```sh
-$ npm install --save @cloudforge/node-digitalocean
+$ npm install --save node-digitalocean
 ```
 
 ## Usage
@@ -21,9 +21,9 @@ Once you've got a `Personal Access Token`, make a note of this somewhere safe, a
 In your project, initialise a new instance of the Digital Ocean wrapper:
 
 ```js
-const DigitalOcean = require("@cloudforge/node-digitalocean").default;
+const DigitalOcean = require("node-digitalocean").default;
 // or
-import DigitalOcean from "@cloudforge/node-digitalocean";
+import DigitalOcean from "node-digitalocean";
 
 const instance = new DigitalOcean('{personal_access_token}');
 ```
