@@ -1,6 +1,6 @@
 {
   "name": "@cloudforge/node-digitalocean",
-  "version": "4.6.1",
+  "version": "1.0.0",
   "description": "Node.js client for Digital Ocean API v2",
   "author": "Vijay Rangan",
   "homepage": "https://github.com/cloudforge/node-digitalocean",
