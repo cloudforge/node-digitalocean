@@ -24,11 +24,16 @@ var sizes_1 = __importDefault(require("./modules/sizes"));
 var snapshots_1 = __importDefault(require("./modules/snapshots"));
 var tags_1 = __importDefault(require("./modules/tags"));
 var volumes_1 = __importDefault(require("./modules/volumes"));
+var http_1 = __importDefault(require("./http"));
+var vpc_1 = __importDefault(require("./modules/vpc/vpc"));
 var DigitalOcean = /** @class */ (function () {
     function DigitalOcean(token, config) {
         var pageSize = (config === null || config === void 0 ? void 0 : config.pageSize) || 10;
         var requestHelper = new request_helper_1.default(token, {
             apiUrl: (config === null || config === void 0 ? void 0 : config.apiUrl) || ""
+        });
+        var httpClient = (0, http_1.default)(token, {
+            baseURL: config === null || config === void 0 ? void 0 : config.apiUrl
         });
         this.account = new account_1.default(pageSize, requestHelper);
         this.actions = new actions_1.default(pageSize, requestHelper);
@@ -50,6 +55,7 @@ var DigitalOcean = /** @class */ (function () {
         this.snapshots = new snapshots_1.default(pageSize, requestHelper);
         this.tags = new tags_1.default(pageSize, requestHelper);
         this.volumes = new volumes_1.default(pageSize, requestHelper);
+        this.vpcs = new vpc_1.default(httpClient);
     }
     return DigitalOcean;
 }());
