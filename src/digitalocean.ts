@@ -20,39 +20,46 @@ import Sizes from './modules/sizes';
 import Snapshots from './modules/snapshots';
 import Tags from './modules/tags';
 import Volumes from './modules/volumes';
+import createHTTPClient from './http';
+import VPC from './modules/vpc/vpc';
 
 interface Config {
-    apiUrl: string;
+    apiUrl?: string;
     pageSize: number;
 }
 
 export default class DigitalOcean {
-    public account: Account;
-    public actions: Actions;
-    public cdn: CDN;
-    public certificates: Certificates;
-    public databases: Databases;
-    public domains: Domains;
-    public droplets: Droplets;
-    public firewalls: Firewalls;
-    public floatingIPs: FloatingIPs;
-    public images: Images;
-    public keys: Keys;
-    public kubernetes: Kubernetes;
-    public loadBalancers: LoadBalancers;
-    public projects: Projects;
-    public regions: Regions;
-    public reports: Reports;
-    public sizes: Sizes;
-    public snapshots: Snapshots;
-    public tags: Tags;
-    public volumes: Volumes;
+    public readonly account: Account;
+    public readonly actions: Actions;
+    public readonly cdn: CDN;
+    public readonly certificates: Certificates;
+    public readonly databases: Databases;
+    public readonly domains: Domains;
+    public readonly droplets: Droplets;
+    public readonly firewalls: Firewalls;
+    public readonly floatingIPs: FloatingIPs;
+    public readonly images: Images;
+    public readonly keys: Keys;
+    public readonly kubernetes: Kubernetes;
+    public readonly loadBalancers: LoadBalancers;
+    public readonly projects: Projects;
+    public readonly regions: Regions;
+    public readonly reports: Reports;
+    public readonly sizes: Sizes;
+    public readonly snapshots: Snapshots;
+    public readonly tags: Tags;
+    public readonly volumes: Volumes;
+    public readonly vpcs: VPC;
 
     constructor(token: string, config?: Config) {
         let pageSize = config?.pageSize || 10;
         const requestHelper = new RequestHelper(token, {
             apiUrl: config?.apiUrl || ""
         });
+        const httpClient = createHTTPClient(token, {
+            baseURL: config?.apiUrl
+        });
+
         this.account = new Account(pageSize, requestHelper);
         this.actions = new Actions(pageSize, requestHelper);
         this.cdn = new CDN(pageSize, requestHelper);
@@ -73,5 +80,6 @@ export default class DigitalOcean {
         this.snapshots = new Snapshots(pageSize, requestHelper);
         this.tags = new Tags(pageSize, requestHelper);
         this.volumes = new Volumes(pageSize, requestHelper);
+        this.vpcs = new VPC(httpClient);
     }
 }
