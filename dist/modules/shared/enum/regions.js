@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Region = void 0;
+var Region;
+(function (Region) {
+    Region["AMS1"] = "ams1";
+    Region["AMS2"] = "ams2";
+    Region["AMS3"] = "ams3";
+    Region["BLR1"] = "blr1";
+    Region["FRA1"] = "fra1";
+    Region["LON1"] = "lon1";
+    Region["NYC1"] = "nyc1";
+    Region["NYC2"] = "nyc2";
+    Region["NYC3"] = "nyc3";
+    Region["SFO1"] = "sfo1";
+    Region["SFO2"] = "sfo2";
+    Region["SFO3"] = "sfo3";
+    Region["SGP1"] = "sgp1";
+    Region["TOR1"] = "tor1";
+})(Region = exports.Region || (exports.Region = {}));

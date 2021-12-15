@@ -4,7 +4,7 @@ import CDN from './modules/cdn';
 import Certificates from './modules/certificates';
 import Databases from './modules/databases';
 import Domains from './modules/domains';
-import Droplets from './modules/droplets';
+import Droplets from './modules/droplets/droplets';
 import Firewalls from './modules/firewalls';
 import FloatingIPs from './modules/floating-ip';
 import Images from './modules/images';

@@ -1,5 +1,4 @@
-export interface DropletCreationRequest {
-    name: string;
+interface DropletCreationRequest {
     region: string;
     size: string;
     image: string;
@@ -13,4 +12,12 @@ export interface DropletCreationRequest {
     monitoring: boolean;
     volumes: string[];
     tags: string[];
+}
+
+export interface CreateSingleDropletsRequest extends DropletCreationRequest {
+    name: string;
+}
+
+export interface CreateMultipleDropletsRequest extends DropletCreationRequest {
+    names: string[];
 }
