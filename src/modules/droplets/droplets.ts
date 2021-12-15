@@ -1,7 +1,8 @@
-import RequestHelper from "../request-helper";
-import { BaseModule } from "./base-module";
-import { DropletCreationRequest } from "../types/droplets";
-import { HttpMethods } from "../common";
+import { HttpMethods } from "../../common";
+import RequestHelper from "../../request-helper";
+import { CreateMultipleDropletsRequest, CreateSingleDropletsRequest } from "../../types/droplets";
+import { BaseModule } from "../base-module";
+import { CreateMultipleDropletsResponse, CreateSingleDropletResponse } from "./dto/responses/create-droplet-response";
 
 export default class Droplets extends BaseModule {
     private basePath: string = 'droplets';
@@ -128,11 +129,19 @@ export default class Droplets extends BaseModule {
      * @param options the options for the new Droplet
      * @returns Promise
      */
-    public create(options: DropletCreationRequest): Promise<any> {
+    public create(options: CreateSingleDropletsRequest): Promise<CreateSingleDropletResponse> {
         return this._execute({
-            ...this.baseOptions,
+            actionPath: this.basePath,
             method: HttpMethods.POST,
             body: options,
+        });
+    }
+
+    public createMultiple(options: CreateMultipleDropletsRequest): Promise<CreateMultipleDropletsResponse> {
+        return this._execute({
+            actionPath: this.basePath,
+            method: HttpMethods.POST,
+            body: options
         });
     }
 
