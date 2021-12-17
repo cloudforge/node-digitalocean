@@ -1,6 +1,6 @@
 {
   "name": "node-digitalocean",
-  "version": "1.2.0",
+  "version": "2.0.1",
   "description": "Node.js client for Digital Ocean API v2",
   "author": "Vijay Rangan",
   "homepage": "https://github.com/cloudforge/node-digitalocean",
@@ -17,6 +17,9 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release --branches main"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cloudforge/node-digitalocean/issues"
