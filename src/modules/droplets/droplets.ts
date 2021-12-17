@@ -137,6 +137,13 @@ export default class Droplets extends BaseModule {
             .then(response => response.data);
     }
 
+    /**
+     * Create multiple droplets
+     *
+     * @param {CreateMultipleDropletsRequest} options
+     * @returns {Promise<CreateMultipleDropletsResponse>}
+     * @memberof Droplets
+     */
     public createMultiple(options: CreateMultipleDropletsRequest): Promise<CreateMultipleDropletsResponse> {
         return this.httpClient.post(this.basePath, options)
             .then(response => response.data);
