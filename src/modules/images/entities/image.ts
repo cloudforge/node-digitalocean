@@ -1,4 +1,4 @@
-import { Region } from "../../shared/enum/regions";
+import { Regions } from "../../shared/enum/regions";
 
 export enum ImageType {
   BASE = "base",
@@ -38,7 +38,7 @@ export type Image = {
   distribution: ImageDistribution;
   slug: null | string;
   public: boolean;
-  regions: Region[];
+  regions: Regions[];
   created_at: string;
   min_disk_size: null | number;
   size_gigabytes: null | number;

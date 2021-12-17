@@ -66,7 +66,7 @@ export default class DigitalOcean {
         this.certificates = new Certificates(pageSize, requestHelper);
         this.databases = new Databases(pageSize, requestHelper);
         this.domains = new Domains(pageSize, requestHelper);
-        this.droplets = new Droplets(pageSize, requestHelper);
+        this.droplets = new Droplets(pageSize, requestHelper, httpClient);
         this.firewalls = new Firewalls(pageSize, requestHelper);
         this.floatingIPs = new FloatingIPs(pageSize, requestHelper);
         this.images = new Images(pageSize, requestHelper);

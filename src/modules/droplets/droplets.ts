@@ -1,3 +1,4 @@
+import { AxiosInstance } from "axios";
 import { HttpMethods } from "../../common";
 import RequestHelper from "../../request-helper";
 import { CreateMultipleDropletsRequest, CreateSingleDropletsRequest } from "../../types/droplets";
@@ -6,13 +7,15 @@ import { CreateMultipleDropletsResponse, CreateSingleDropletResponse } from "./d
 
 export default class Droplets extends BaseModule {
     private basePath: string = 'droplets';
+    private readonly httpClient: AxiosInstance;
 
     private baseOptions: any = {
         actionPath: `${this.basePath}/`,
     };
 
-    constructor(pageSize: number, requestHelper: RequestHelper) {
+    constructor(pageSize: number, requestHelper: RequestHelper, httpClient: AxiosInstance) {
         super(pageSize, requestHelper);
+        this.httpClient = httpClient;
     }
 
     /**
@@ -130,19 +133,13 @@ export default class Droplets extends BaseModule {
      * @returns Promise
      */
     public create(options: CreateSingleDropletsRequest): Promise<CreateSingleDropletResponse> {
-        return this._execute({
-            actionPath: this.basePath,
-            method: HttpMethods.POST,
-            body: options,
-        });
+        return this.httpClient.post(this.basePath, options)
+            .then(response => response.data);
     }
 
     public createMultiple(options: CreateMultipleDropletsRequest): Promise<CreateMultipleDropletsResponse> {
-        return this._execute({
-            actionPath: this.basePath,
-            method: HttpMethods.POST,
-            body: options
-        });
+        return this.httpClient.post(this.basePath, options)
+            .then(response => response.data);
     }
 
     /**

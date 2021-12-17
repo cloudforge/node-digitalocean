@@ -4,6 +4,7 @@ node_modules
 *.iml
 doc/
 out/
+dist/
 .DS_Store
 .*.swp
 ._*

@@ -1,4 +1,4 @@
-export enum Region {
+export enum Regions {
   AMS1 = "ams1",
   AMS2 = "ams2",
   AMS3 = "ams3",
