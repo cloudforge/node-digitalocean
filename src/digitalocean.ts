@@ -14,19 +14,35 @@ import Keys from './modules/keys';
 import Kubernetes from './modules/kubernetes';
 import LoadBalancers from './modules/load-balancers';
 import Projects from './modules/projects';
-import Regions from './modules/regions';
+import RegionsAPI from './modules/regions';
 import Reports from './modules/reports';
-import Sizes from './modules/sizes';
+import SizesAPI from './modules/sizes';
 import Snapshots from './modules/snapshots';
 import Tags from './modules/tags';
 import Volumes from './modules/volumes';
 import createHTTPClient from './http';
-import VPC from './modules/vpc/vpc';
+import VPCAPI from './modules/vpc/vpc';
 
 interface Config {
     apiUrl?: string;
     pageSize: number;
 }
+
+// Re-export enums
+export { Regions } from './modules/shared/enum/regions';
+export { Sizes } from './modules/shared/enum/sizes';
+
+// Re-export entities
+export { Droplet } from './modules/droplets/dto/entities/droplet';
+export { Region } from './modules/shared/entities/region';
+export { Size } from './modules/shared/entities/droplet-size';
+export { VPC } from './modules/vpc/dto/entities/vpc';
+
+// Re-export responses
+export { CreateSingleDropletResponse, CreateMultipleDropletsResponse } from './modules/droplets/dto/responses/create-droplet-response';
+export { CreateVPCResponse } from './modules/vpc/dto/responses/create-vpc-response.dto';
+export { GetVPCResponse } from './modules/vpc/dto/responses/get-vpc-response.dto';
+export { ListVPCResponse } from './modules/vpc/dto/responses/list-vpc-response-dto';
 
 export default class DigitalOcean {
     public readonly account: Account;
@@ -43,13 +59,13 @@ export default class DigitalOcean {
     public readonly kubernetes: Kubernetes;
     public readonly loadBalancers: LoadBalancers;
     public readonly projects: Projects;
-    public readonly regions: Regions;
+    public readonly regions: RegionsAPI;
     public readonly reports: Reports;
-    public readonly sizes: Sizes;
+    public readonly sizes: SizesAPI;
     public readonly snapshots: Snapshots;
     public readonly tags: Tags;
     public readonly volumes: Volumes;
-    public readonly vpcs: VPC;
+    public readonly vpcs: VPCAPI;
 
     constructor(token: string, config?: Config) {
         let pageSize = config?.pageSize || 10;
@@ -74,12 +90,12 @@ export default class DigitalOcean {
         this.kubernetes = new Kubernetes(pageSize, requestHelper);
         this.loadBalancers = new LoadBalancers(pageSize, requestHelper);
         this.projects = new Projects(pageSize, requestHelper);
-        this.regions = new Regions(pageSize, requestHelper);
+        this.regions = new RegionsAPI(pageSize, requestHelper);
         this.reports = new Reports(pageSize, requestHelper);
-        this.sizes = new Sizes(pageSize, requestHelper);
+        this.sizes = new SizesAPI(pageSize, requestHelper);
         this.snapshots = new Snapshots(pageSize, requestHelper);
         this.tags = new Tags(pageSize, requestHelper);
         this.volumes = new Volumes(pageSize, requestHelper);
-        this.vpcs = new VPC(httpClient);
+        this.vpcs = new VPCAPI(httpClient);
     }
 }
